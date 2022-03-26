@@ -15,4 +15,4 @@ RUN git clone https://github.com/marinatest3003/basic.git
 #CMD instruction should be used to run the software
 #contained by your image, along with any arguments.
 
-CMD [ "python", "./hello.py"]
+CMD [ "python", "/home/basic/hello.py"]
