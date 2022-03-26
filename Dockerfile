@@ -1,17 +1,21 @@
-FROM ubuntu
 
-RUN apt update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt install -y software-properties-common python3.9 python3-pip python-configparser git
-RUN pip install requests sha256
+FROM python:latest
 
-#installing git
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y git
-#Creating new folder in the ubuntu and cloaning our code into it to use it
-RUN mkdir /home/basic
-WORKDIR  /home/basic
+
+#Labels as key value pair
+LABEL Maintainer="roushan.me17"
+
+
+# Any working directory can be chosen as per choice like '/' or '/home' etc
+# i have chosen /usr/app/src
+WORKDIR /home/basic
+
+#to COPY the remote file at working directory in container
 RUN git clone https://github.com/marinatest3003/basic.git
+# Now the structure looks like this '/usr/app/src/test.py'
 
-WORKDIR /home/jfrog/basic
+
+#CMD instruction should be used to run the software
+#contained by your image, along with any arguments.
 
 CMD [ "python", "./hello.py"]
